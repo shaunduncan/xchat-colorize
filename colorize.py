@@ -47,7 +47,7 @@ def is_colorized(string):
     return '\003' in string
 
 
-def color_disabled():
+def color_enabled():
     """
     Simple wrapper to check pref setting for automatic nick coloring
     """
@@ -94,7 +94,7 @@ def colorize_message(word, word_eol, userdata):
     message = word[1]
 
     # This prevents recursive printing
-    if is_colorized(message) or color_disabled():
+    if is_colorized(message) or not color_enabled():
         return xchat.EAT_NONE
 
     current_channel = xchat.get_info('channel')
