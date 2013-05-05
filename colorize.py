@@ -42,7 +42,7 @@ nick_pat = re.compile(r'([a-zA-Z0-9\[\]\{\}\^\\\-_]+)')
 
 def is_colorized(string):
     """
-    Checks to see if a string is already colorized, i.e. if 0x3 appears in the content 
+    Checks to see if a string is already colorized, i.e. if 0x3 appears in the content
     """
     return '\003' in string
 
@@ -118,7 +118,7 @@ def colorize_message(word, word_eol, userdata):
     # Colorize URLs
     for url in url_pat.findall(output):
         output = output.replace(url, '\037\00328%s\017' % url)
-    
+
     # This is a bit of a hack where we tag the message with a non-printing
     # color so we don't recurse forever
     if not is_colorized(output):
