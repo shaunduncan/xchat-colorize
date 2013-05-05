@@ -30,13 +30,13 @@ import xchat
 
 __module_name__ = 'colorize'
 __module_author__ = 'Shaun Duncan'
-__module_version__ = '0.1'
+__module_version__ = '0.2'
 __module_description__ = 'Colorizes nicks and URLs in messages'
 
 
 # Taken from source: src/common/text.c - rcolors
 colors = [19, 20, 22, 24, 25, 26, 27, 28, 29]
-url_pat = re.compile(r'(https?://[-A-Za-z0-9+&@#/%?=~_()|!:,.;]*[-A-Za-z0-9+&@#/%=~_|])', re.I)
+url_pat = re.compile(r'(https?://[-A-Za-z0-9+&@#/%?=~_()|!:,.;\003\017]*[-A-Za-z0-9+&@#/%=~_|\003\017])', re.I)
 nick_pat = re.compile(r'([a-zA-Z0-9\[\]\{\}\^\\\-_]+)')
 
 
@@ -117,7 +117,7 @@ def colorize_message(word, word_eol, userdata):
 
     # Colorize URLs
     for url in url_pat.findall(output):
-        output = output.replace(url, '\037\00328%s\017' % url)
+        output = output.replace(url, '\037\00328%s\017' % xchat.strip(url, len(url), 3))
 
     # This is a bit of a hack where we tag the message with a non-printing
     # color so we don't recurse forever
