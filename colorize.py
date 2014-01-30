@@ -30,7 +30,7 @@ import xchat
 
 __module_name__ = 'colorize'
 __module_author__ = 'Shaun Duncan'
-__module_version__ = '0.2'
+__module_version__ = '0.3'
 __module_description__ = 'Colorizes nicks and URLs in messages'
 
 
@@ -91,6 +91,9 @@ def colorize_message(word, word_eol, userdata):
     URLs and nicks and colorizes them. This colorized output is sent along to the
     client
     """
+    if len(word) < 2:
+        return xchat.EAT_NONE
+
     message = word[1]
 
     # This prevents recursive printing
