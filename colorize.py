@@ -128,7 +128,7 @@ def colorize_message(word, word_eol, userdata):
         output = '%s%s' % (output, colorize_string(''))
 
     xchat.emit_print(userdata, word[0], output)
-    return xchat.EAT_XCHAT
+    return xchat.EAT_ALL
 
 
 # Hook anything that prints a relevant message
