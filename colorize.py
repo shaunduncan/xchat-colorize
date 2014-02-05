@@ -23,6 +23,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 """
+from __future__ import print_function
 
 import re
 import xchat
@@ -82,7 +83,7 @@ def on_unload(data):
     """
     Callback for module unload
     """
-    print '%s plugin v%s unloaded' % (_color_mod_name, __module_version__)
+    print('{0} plugin v{1} unloaded'.format(_color_mod_name, __module_version__))
 
 
 def colorize_message(word, word_eol, userdata):
@@ -139,4 +140,4 @@ xchat.hook_print('Private Message', colorize_message, userdata='Private Message'
 xchat.hook_print('Private Message to Dialog', colorize_message, userdata='Private Message to Dialog')
 
 
-print '%s plugin v%s loaded' % (_color_mod_name, __module_version__)
+print('{0} plugin v{1} loaded'.format(_color_mod_name, __module_version__))
