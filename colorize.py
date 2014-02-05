@@ -31,7 +31,7 @@ import xchat
 
 __module_name__ = 'colorize'
 __module_author__ = 'Shaun Duncan'
-__module_version__ = '0.3'
+__module_version__ = '0.4'
 __module_description__ = 'Colorizes nicks and URLs in messages'
 
 
