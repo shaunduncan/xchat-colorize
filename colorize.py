@@ -31,7 +31,7 @@ import xchat
 
 __module_name__ = 'colorize'
 __module_author__ = 'Shaun Duncan'
-__module_version__ = '0.4'
+__module_version__ = '0.5'
 __module_description__ = 'Colorizes nicks and URLs in messages'
 
 
@@ -98,7 +98,7 @@ def colorize_message(word, word_eol, userdata):
     message = word[1]
 
     # This prevents recursive printing
-    if is_colorized(message) or not color_enabled():
+    if is_colorized(message):
         return xchat.EAT_NONE
 
     current_channel = xchat.get_info('channel')
@@ -109,15 +109,19 @@ def colorize_message(word, word_eol, userdata):
     else:
         nicks = [u.nick for u in xchat.get_list('users')]
 
-    output = []
+    # Only perform nick coloring if the setting is enabled
+    if color_enabled():
+        output = []
 
-    # Split up the message delimited by a possible nick
-    for token in nick_pat.split(message):
-        if token in nicks:
-            token = colorize_string(token)
-        output.append(token)
+        # Split up the message delimited by a possible nick
+        for token in nick_pat.split(message):
+            if token in nicks:
+                token = colorize_string(token)
+            output.append(token)
 
-    output = ''.join(output)
+        output = ''.join(output)
+    else:
+        output = message
 
     # Colorize URLs
     for url in url_pat.findall(output):

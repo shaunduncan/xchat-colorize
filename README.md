@@ -5,6 +5,7 @@ XChat/Hexchat plugin that colorizes nicks and URLs in messages. Simply install
 `colorize.py` in your addons directory and perform `/py load colorize.py` or
 restart xchat/hexchat. You will also need to enable colored nick names in
 XChat/Hexchat settings via Settings -> Preferences -> Appearance -> Colored nick names.
+Note that URLs will always be colorized, regardless of the value of this setting.
 
 
 License
