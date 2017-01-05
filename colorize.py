@@ -131,7 +131,7 @@ def colorize_message(word, word_eol, userdata):
     # color so we don't recurse forever
     if not is_colorized(output):
         output = '%s%s' % (output, colorize_string(''))
-
+    xchat.command('gui color 2')
     xchat.emit_print(userdata, word[0], output)
     return xchat.EAT_ALL
 
